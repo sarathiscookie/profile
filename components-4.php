@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Data Binding</title>
+    <title>Components</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -18,7 +18,17 @@
     <![endif]-->
 </head>
 <body>
-<my-component></my-component>
+<div id="app">
+    <counter></counter>
+    <counter></counter>
+</div>
+
+<template id="counterTemplate">
+    <h1>Heading</h1>
+    <button @click="count += 1">{{ count }}</button>
+</template>
+
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
@@ -26,17 +36,22 @@
 <!-- Vue Js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
 <script>
-    Vue.component('my-component', {
-        template: '<h3> Welcome </h3>'
-    })
+ // define
+ var component = Vue.extend({
+     template: '#counterTemplate',
+     data: function (){
+         return {
+             count : 0
+         };
+     }
+ })
 
-    new Vue({
-        el: 'body',
-        data: {
-            message: '',
-            count: 0
-        }
-    });
+ // register
+ Vue.component('counter', component)
+
+ new Vue({
+     el: '#app'
+ })
 </script>
 </body>
 </html>
