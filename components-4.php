@@ -19,12 +19,12 @@
 </head>
 <body>
 <div id="app">
-    <counter></counter>
-    <counter></counter>
+    <counter subject="Likes"></counter>
+    <counter subject="Dislikes"></counter>
 </div>
 
 <template id="counterTemplate">
-    <h1>Heading</h1>
+    <h1>{{ subject }}</h1>
     <button @click="count += 1">{{ count }}</button>
 </template>
 
@@ -39,6 +39,7 @@
  // define
  var component = Vue.extend({
      template: '#counterTemplate',
+     props: ['subject'],
      data: function (){
          return {
              count : 0
@@ -52,6 +53,22 @@
  new Vue({
      el: '#app'
  })
+ /*new Vue({
+
+     el: '#app',
+
+     components: {
+         counter: {
+             template: '#counterTemplate',
+             props: ['subject'],
+             data: function (){
+                 return {
+                     count : 0
+                 };
+             }
+         }
+     }
+ })*/
 </script>
 </body>
 </html>
