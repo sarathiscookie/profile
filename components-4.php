@@ -36,7 +36,7 @@
 <!-- Vue Js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
 <script>
- // define
+ /*// define
  var component = Vue.extend({
      template: '#counterTemplate',
      props: ['subject'],
@@ -52,8 +52,8 @@
 
  new Vue({
      el: '#app'
- })
- /*new Vue({
+ })*/
+ new Vue({
 
      el: '#app',
 
@@ -68,7 +68,7 @@
              }
          }
      }
- })*/
+ })
 </script>
 </body>
 </html>
