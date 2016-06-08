@@ -45,6 +45,7 @@
 <script>
     new Vue({
         el: '#app',
+
         data: {
             plans: [
                 { name: 'Enterprise', amount: '100/month' },
@@ -53,16 +54,17 @@
                 { name: 'Free', amount: '0/month' }
             ]
         },
+
         components:{
             plan: {
                 template: '#plan-template',
 
                 props: ['plan'],
 
-                data: {
-                    return{
+                data: function(){
+                    return {
                         active: false
-                    }
+                    };
                 },
 
                 methods:{
