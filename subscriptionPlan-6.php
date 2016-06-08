@@ -19,14 +19,14 @@
 </head>
 <body>
 <div id="app" class="container">
+    <pre>{{ $data|json }}</pre>
     <div v-for="plan in plans">
-        <plan :plan="plan"></plan>
+        <plan :plan="plan" :active.sync="active"></plan>
     </div>
 </div>
 
 <template id="plan-template">
     <div class="row">
-        {{ $data|json }}
         <div class="col-md-12">
             <div class="col-md-4"><span>{{ plan.name }}</span></div>
             <div class="col-md-4"><span>{{ plan.amount }}</span></div>
@@ -52,20 +52,15 @@
                 { name: 'Professional', amount: '75/month' },
                 { name: 'Starter', amount: '50/month' },
                 { name: 'Free', amount: '0/month' }
-            ]
+            ],
+            active: {}
         },
 
         components:{
             plan: {
                 template: '#plan-template',
 
-                props: ['plan'],
-
-                data: function(){
-                    return {
-                        active: false
-                    };
-                },
+                props: ['plan', 'active'],
 
                 methods:{
                     activeplan: function(){
@@ -73,7 +68,6 @@
                     }
                 }
             }
-
         }
     })
 </script>
