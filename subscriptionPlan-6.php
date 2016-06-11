@@ -30,7 +30,9 @@
         <div class="col-md-12">
             <div class="col-md-4"><span>{{ plan.name }}</span></div>
             <div class="col-md-4"><span>{{ plan.amount }}</span></div>
-            <div class="col-md-4"><button @click="activeplan">Subscribe</button></div>
+            <div class="col-md-4">
+                <button @click="activeplan">{{ isUpgrade ? 'Upgrade' : 'Downgrade' }}</button>
+            </div>
         </div>
     </div>
     <br />
@@ -61,6 +63,12 @@
                 template: '#plan-template',
 
                 props: ['plan', 'active'],
+
+                computed: {
+                    isUpgrade : function(){
+                        return this.plan.amount > this.active.amount;
+                    }
+                },
 
                 methods:{
                     activeplan: function(){
