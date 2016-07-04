@@ -19,14 +19,9 @@
 </head>
 <body>
 <div id="app" class="container">
+    <input type="text" v-model="model">
+    <p>{{ model }}</p>
 </div>
-
-<template id="plan-template">
-    <div class="row">
-    </div>
-    <br />
-</template>
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
@@ -35,9 +30,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
 <script>
     new Vue({
-        el: "#app"
+        el: "#app",
+        data: {
+            model: 'test'
+        }
     });
-    Vue.config.debug = true;
+    Vue.config.devtools = false;
 </script>
 </body>
 </html>
