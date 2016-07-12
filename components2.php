@@ -51,7 +51,10 @@
 <script>
     /* Example 1 begin*/
     var component = Vue.extend({
-        template: '<div><b>Result: </b>Welcome onboard!</div>'
+        template: '<div><b>Result: </b>Welcome onboard! {{ name }}</div>',
+        data: function(){
+            return { name: 'Sarath TS' }
+        }
     })
 
     Vue.component('my-component', component)
@@ -59,7 +62,13 @@
 
     /* Example 2 begin*/
     var component = Vue.component('my-secondcomponent', {
-        template: '<div><b>Result: </b>Hello</div>'
+        template: '<div><b>Result: </b>{{ firstname }}.{{ lastname }}</div>',
+        data: function(){
+            return {
+                firstname: 'Sarath',
+                lastname: 'TS'
+            }
+        }
     })
     /* Example 2 end*/
     new Vue({
