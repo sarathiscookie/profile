@@ -19,14 +19,21 @@
 </head>
 <body>
 <div id="app" class="container">
-    <h4>Cannot directly reference parent data in a child component’s template. Data can be passed down to child components using props</h4>
+    <h4><b>Note: </b>Cannot directly reference parent data in a child component’s template. Data can be passed down to child components using props</h4>
+    <h4><b>Note: </b>HTML attributes are case-insensitive. When using camelCased prop names as attributes, you need to use their kebab-case (hyphen-delimited) equivalents "<my-component my-message="Welcome onboard!"></my-component>"</h4>
     <pre>
-      Vue.component('my-message', {
-        props: ['msg'],
+      In HTML
+        my-message
+
+      In JS
+        myMessage
+        
+      Vue.component('my-component', {
+        props: ['myMessage'],
         template: '',
       })
     </pre>
-    <my-message msg="Welcome onboard!"></my-message>
+    Result:<my-component my-message="Welcome onboard!"></my-component>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -35,9 +42,9 @@
 <!-- Vue Js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
 <script>
-    Vue.component('my-message', {
-        props: ['msg'],
-        template: '<div>{{ msg }}</div>',
+    Vue.component('my-component', {
+        props: ['myMessage'],
+        template: '<div>{{ myMessage }}</div>',
     })
 
     new Vue({
