@@ -19,9 +19,26 @@
 </head>
 <body>
 <div id="app" class="container">
-    <h4>Going on #Dynamic Props</h4>
-    <input type="text" v-model="message">
-    <my-component :message="message"></my-component>
+    <h4>Dynamic Props</h4>
+    <input type="text" v-model="parentMsg">
+    <child :my-message="parentMsg"></child><br>
+
+    <h4>Binding props:[] and The shorthand syntax for v-bind: </h4>
+    <h5>eg-> :my-message="parentMsg"</h5><br>
+    <pre>
+       Vue.component('child', {
+        props: ['myMessage'],
+        template: 'DIV myMessage DIV'
+    })
+
+    new Vue({
+       el: '#app',
+       data:{
+           parentMsg: ''
+       }
+    });
+
+    </pre>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -30,15 +47,17 @@
 <!-- Vue Js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
 <script>
-    Vue.component('my-component', {
-        props: ['message'],
-
-        template: '<p>{{ message }}</p>',
+    Vue.component('child', {
+        props: ['myMessage'],
+        template: '<div>{{ myMessage }}</div>'
     })
 
     new Vue({
-        el: '#app'
-    })
+       el: '#app',
+       data:{
+           parentMsg: ''
+       }
+    });
 </script>
 </body>
 </html>
