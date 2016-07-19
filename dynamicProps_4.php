@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Computed</title>
+    <title>Dynamic props[]</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -21,7 +21,7 @@
 <div id="app" class="container">
     <h4>Dynamic Props</h4>
     <input type="text" v-model="parentMsg">
-    <child :my-message="parentMsg"></child><br>
+    <child :msg.sync="parentMsg"></child><br>
 
     <h4>Binding props:[] and The shorthand syntax for v-bind: </h4>
     <h5>eg-> :my-message="parentMsg"</h5>
@@ -48,8 +48,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
 <script>
     Vue.component('child', {
-        props: ['myMessage'],
-        template: '<div>{{ myMessage }}</div>'
+        props: ['msg'],
+        template: '<div>{{ msg }}</div>'
     })
 
     new Vue({
