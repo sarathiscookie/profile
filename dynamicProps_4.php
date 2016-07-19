@@ -24,21 +24,21 @@
     <child :my-message="parentMsg"></child><br>
 
     <h4>Binding props:[] and The shorthand syntax for v-bind: </h4>
-    <h5>eg-> :my-message="parentMsg"</h5><br>
+    <h5>eg-> :my-message="parentMsg"</h5>
+    <h4>one-way-down binding</h4>
     <pre>
-       Vue.component('child', {
-        props: ['myMessage'],
-        template: 'DIV myMessage DIV'
-    })
-
-    new Vue({
-       el: '#app',
-       data:{
-           parentMsg: ''
-       }
-    });
-
+        :msg="parentMsg"
     </pre>
+    <h4>two-way binding: The two-way binding will sync the change of child’s msg property back to the parent’s parentMsg property</h4>
+    <pre>
+        :msg.sync="parentMsg"
+    </pre>
+    <h4>one-time binding: The one-time binding, once set up, will not sync future changes between the parent and the child</h4>
+    <pre>
+        :msg.once="parentMsg"
+    </pre>
+    <br>
+
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
