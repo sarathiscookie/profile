@@ -41,6 +41,8 @@
     Vue.component('child', {
         template: '#child-template',
 
+        props: ['childMsg'],
+
         data: function(){
             return {
                 msg: 'hello'
