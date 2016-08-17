@@ -18,18 +18,12 @@
     <![endif]-->
 </head>
 <body>
-<!-- template for parent -->
+
 <div id="app">
-    <p>Messages: {{ messages | json }}</p>
-    <child></child>
+<ul v-for="todo in todos">
+    <li>{{ todo.text }}</li>
+</ul>
 </div>
-
-<!-- template for child -->
-<template id="child-template">
-    <input v-model="msg">
-    <button v-on:click="notify">Dispatch Event</button>
-</template>
-
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -38,39 +32,15 @@
 <!-- Vue Js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
 <script>
-    Vue.component('child', {
-        template: '#child-template',
-
-        props: ['childMsg'],
-
-        data: function(){
-            return {
-                msg: 'hello'
-            }
-        },
-
-        methods: {
-            notify: function(){
-                if (this.msg.trim()) {
-                    this.$dispatch('child-msg', this.msg)
-                    this.msg = ''
-                }
-            }
-        }
-    })
-
     new Vue({
-       el: '#app',
-
+        el: '#app',
         data: {
-           messages:[]
-       },
-
-       events: {
-           'child-msg': function(msg){
-               this.messages.push(msg)
-           }
-       }
+            todos: [
+                { text: 'Learn JavaScript' },
+                { text: 'Learn Vue.js' },
+                { text: 'Build Something Awesome' }
+            ]
+        }
     });
 </script>
 </body>
